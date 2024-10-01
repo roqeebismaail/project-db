@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Developer | Sign UP</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-outside d-flex u-d-center">
+        <div class="background-wall background-wall--1">&nbsp;</div>
+        <div class="background-wall background-wall--2">&nbsp;</div>
+        <div class="background-wall background-wall--3">&nbsp;</div>
+
+        <div class="container-inner">
+          <div class="container-inner--2 content gap--4">
+            <div class="header d-flex">
+              <a href="index.html">
+                <div class="icons icons-back icons-back--2">
+                  <span class="material-symbols-outlined"> arrow_back</span>
+                </div>
+              </a>
+
+              <img
+                src="Capture1-removebg-preview.png"
+                alt="img"
+                class="logo--2"
+              />
+
+              <div class="print d-flex u-d-center d-none">
+                <div class="close">
+                  <span class="material-symbols-outlined"> close </span>
+                </div>
+
+                <span class="print-out" id="print-out"></span>
+              </div>
+            </div>
+
+            <div class="sign-up d-flex u-d-center flex-col">
+              <p class="description">Create New Account</p>
+
+              <div class="overflow-y d-flex flex-col form-sign">
+                <label for="firstname">FirstName</label>
+
+                <input type="text" id="firstname" />
+
+                <label for="lastname">LastName</label>
+                <input type="text" id="lastname" />
+
+                <label for="email">Email</label>
+                <input type="text" id="email" />
+
+                <label for="country">Country</label>
+                <select name="" id="country">
+                  <option value="ng">Nigeria</option>
+                  <option value="usa">USA</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="kw">Kuwait</option>
+                  <option value="zoo">Somewhere in the Zoo😫</option>
+                </select>
+
+                <label for="number">Phone Number</label>
+                <input type="number" id="number" placeholder="0701-234-5678" />
+
+                <label for="password">Password</label>
+                <input type="text" id="password" />
+
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="text" id="confirmpassword" />
+
+                <span class="condition"
+                  ><input type="checkbox" id="checkbox" />
+                  <span
+                    >By clicking this, I agree with terms and Condition</span
+                  ></span
+                >
+
+                <span class="sign-btn btn btn--secondary">Sign UP</span>
+              </div>
+            </div>
+
+            <div class="footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+
+      let signBtn = document.querySelector(".sign-btn");
+      let alert = document.querySelector(".print");
+      let closeBtn = document.querySelector(".close");
+      let printOut = document.querySelector(".print-out");
+
+      // function closeBtn(params) {
+      //   alert.classList.add("d-none");
+      // }
+
+      closeBtn.addEventListener("click", () => {
+        alert.classList.add("d-none");
+      });
+
+      function alertOut(description) {
+        alert.classList.remove("d-none");
+        printOut.innerHTML = description;
+      }
+
+      // my bug1
+
+      let input = document.querySelectorAll("input");
+
+      if (alertOut) {
+        input.disabled = true;
+      }
+
+      let data = [];
+
+      signBtn.addEventListener("click", () => {
+        let regex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+        if (
+          !firstname.value.trim() ||
+          !lastname.value.trim() ||
+          !email.value.trim() ||
+          !country.value.trim() ||
+          !number.value.trim() ||
+          !password.value.trim() ||
+          !confirmpassword.value.trim()
+        ) {
+          alertOut("all field is mandatory!");
+        } else if (!number.value.trim() || number.value.length !== 11) {
+          alertOut("Enter a valid phone number");
+        } else if (
+          password.value !== confirmpassword.value ||
+          !confirmpassword.value.trim()
+        ) {
+          alertOut("input password didn't match");
+        } else if (!regex.test(password.value)) {
+          alertOut(
+            "Password should contains atleast 8 char, Lowercase, UpperCase and Symbol"
+          );
+        } else if (!checkbox.checked) {
+          alertOut("click to agree terms and condition");
+        } else {
+          alertOut("account created successfully!");
+
+          let account = {
+            firstName: firstname.value,
+            lastName: lastname.value,
+            email: email.value,
+            country: country.value,
+            phone: number.value,
+            crypt: password.value,
+          };
+
+          data.push(account);
+
+          let dataBase = localStorage.setItem("dataBase", JSON.stringify(data));
+        }
+
+        let dataBaseId = JSON.parse(localStorage.getItem("dataBase"));
+
+        console.log(dataBaseId);
+      });
+    </script>
+  </body>
+</html>

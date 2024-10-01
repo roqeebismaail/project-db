@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Developer</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-outside d-flex u-d-center">
+        <div class="background-wall background-wall--1">&nbsp;</div>
+        <div class="background-wall background-wall--2">&nbsp;</div>
+        <div class="background-wall background-wall--3">&nbsp;</div>
+        <!-- <div class="background-wall background-wall--4">&nbsp;</div> -->
+
+        <div class="container-inner">
+          <div
+            class="container-inner--1 content d-flex u-d-center flex-col gap--4"
+          >
+            <div class="img">
+              <img
+                src="Capture1-removebg-preview.png"
+                alt=""
+                class="img-logo"
+              />
+            </div>
+
+            <button class="btn btn--primary btn--animated" id="btn-go">
+              Get Started &rarr;
+            </button>
+
+            <span class="text-description">
+              Lorem ipsum dolor sit amet consec adipisicing elit. Recusandae
+              ipsum quis inventore ut.
+            </span>
+          </div>
+
+          <div class="container-inner--2 content d-none gap--4">
+            <div class="header">
+              <div class="icons icons-back icons-back--1">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </div>
+
+              <img
+                src="Capture1-removebg-preview.png"
+                alt="img"
+                class="logo--2"
+              />
+            </div>
+
+            <div class="login d-flex u-d-center flex-col">
+              <p class="description">Lorem, ipsum dolor sit.</p>
+
+              <label for="email">Email</label>
+              <input type="text" id="email" />
+
+              <label for="password">Password</label>
+              <input type="text" id="password" />
+
+              <span class="login-btn btn btn--secondary">Login</span>
+
+              <span class="create"
+                >New Account?
+                <a href="sign-up.html" id="sign-up">Sign Up.</a></span
+              >
+            </div>
+
+            <div class="footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let btn = document.getElementById("btn-go");
+
+      let container1 = document.querySelector(".container-inner--1");
+      let container2 = document.querySelector(".container-inner--2");
+      let backBtn = document.querySelector(".icons-back--1");
+
+      btn.addEventListener("click", (event) => {
+        console.log(event);
+        console.log(btn);
+
+        container1.classList.add("d-none");
+        container2.classList.remove("d-none");
+      });
+
+      backBtn.addEventListener("click", () => {
+        container1.classList.remove("d-none");
+        container2.classList.add("d-none");
+      });
+    </script>
+  </body>
+</html>
