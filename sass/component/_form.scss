@@ -1,0 +1,57 @@
+.login--form,
+.sign-up--form {
+  height: 62%;
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 2rem;
+
+  .heading-primary {
+    font-size: 1.8rem;
+    text-align: center;
+    background-image: linear-gradient(
+      to right bottom,
+      $color-primary,
+      $text-primary
+    );
+    display: inline-block;
+
+    font-weight: 600;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    margin-block: 2rem 4rem;
+  }
+
+  label {
+    margin-bottom: 1rem;
+    color: #330e00;
+    font-weight: 600;
+  }
+
+  input,
+  select {
+    margin-bottom: 2rem;
+    display: inline-block;
+    border: none;
+    padding: 0.5rem 1rem;
+
+    &:focus {
+      outline: 1px solid $color-primary;
+    }
+  }
+
+  input {
+    font-size: 1.6rem;
+    color: #330e00;
+  }
+
+  select {
+    width: 50%;
+  }
+
+  & .btn {
+    margin-bottom: 2.4rem;
+  }
+}

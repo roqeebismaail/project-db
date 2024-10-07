@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Developer | Sign UP</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <link
       rel="stylesheet"
@@ -12,80 +12,91 @@
     />
   </head>
   <body>
-    <div class="container">
-      <div class="container-outside d-flex u-d-center">
-        <div class="background-wall background-wall--1">&nbsp;</div>
-        <div class="background-wall background-wall--2">&nbsp;</div>
-        <div class="background-wall background-wall--3">&nbsp;</div>
+    <div class="app-container">
+      <div class="app-background d-flex u-d-center">
+        <div class="background-layer background-layer--1">&nbsp;</div>
+        <div class="background-layer background-layer--2">&nbsp;</div>
+        <div class="background-layer background-layer--3">&nbsp;</div>
 
-        <div class="container-inner">
-          <div class="container-inner--2 content gap--4">
-            <div class="header d-flex">
-              <a href="index.html">
-                <div class="icons icons-back icons-back--2">
-                  <span class="material-symbols-outlined"> arrow_back</span>
-                </div>
-              </a>
-
-              <img
-                src="Capture1-removebg-preview.png"
-                alt="img"
-                class="logo--2"
-              />
-
-              <div class="print d-flex u-d-center d-none">
-                <div class="close">
-                  <span class="material-symbols-outlined"> close </span>
-                </div>
-
-                <span class="print-out" id="print-out"></span>
+        <div class="container--sign-up content gap--4">
+          <div class="header header--sign-up d-flex">
+            <a href="login.html">
+              <div class="icons icons-back icons-back--2">
+                <span class="material-symbols-outlined"> arrow_back</span>
               </div>
+            </a>
+
+            <img src="img/logo.png" alt="img-logo" class="logo--2" />
+
+            <div class="alert d-flex u-d-center d-none">
+              <div class="close">
+                <span class="material-symbols-outlined"> close </span>
+              </div>
+
+              <span class="alert-message" id="alert-message"></span>
             </div>
+          </div>
 
-            <div class="sign-up d-flex u-d-center flex-col">
-              <p class="description">Create New Account</p>
+          <div class="sign-up--form d-flex u-d-center flex-col">
+            <p class="heading-primary">Create New Account</p>
 
-              <div class="overflow-y d-flex flex-col form-sign">
-                <label for="firstname">FirstName</label>
+            <div class="overflow-y d-flex flex-col form-sign">
+              <label for="firstname">FirstName</label>
 
-                <input type="text" id="firstname" />
+              <input type="text" id="firstname" />
 
-                <label for="lastname">LastName</label>
-                <input type="text" id="lastname" />
+              <label for="lastname">LastName</label>
+              <input type="text" id="lastname" />
 
-                <label for="email">Email</label>
-                <input type="text" id="email" />
+              <label for="email">Email</label>
+              <input type="text" id="email" />
 
-                <label for="country">Country</label>
-                <select name="" id="country">
-                  <option value="ng">Nigeria</option>
-                  <option value="usa">USA</option>
-                  <option value="uk">United Kingdom</option>
-                  <option value="kw">Kuwait</option>
-                  <option value="zoo">Somewhere in the Zoo😫</option>
-                </select>
+              <label for="country">Country</label>
+              <select name="" id="country">
+                <option value="ng">Nigeria</option>
+                <option value="usa">USA</option>
+                <option value="uk">United Kingdom</option>
+                <option value="kw">Kuwait</option>
+                <option value="zoo">South Africa</option>
+              </select>
 
-                <label for="number">Phone Number</label>
-                <input type="number" id="number" placeholder="0701-234-5678" />
+              <label for="number">Phone Number</label>
+              <input type="number" id="number" placeholder="0701-234-5678" />
 
-                <label for="password">Password</label>
-                <input type="text" id="password" />
-
-                <label for="confirmpassword">Confirm Password</label>
-                <input type="text" id="confirmpassword" />
-
-                <span class="condition"
-                  ><input type="checkbox" id="checkbox" />
-                  <span
-                    >By clicking this, I agree with terms and Condition</span
-                  ></span
+              <label for="password">Password</label>
+              <div class="for-password">
+                <input type="password" id="password" /><span
+                  class="material-symbols-outlined hide-password"
                 >
-
-                <span class="sign-btn btn btn--secondary">Sign UP</span>
+                  visibility_off
+                </span>
               </div>
-            </div>
 
-            <div class="footer"></div>
+              <label for="confirmpassword">Confirm Password</label>
+              <div class="for-password">
+                <input type="password" id="confirmPassword" />
+                <span class="material-symbols-outlined hide-confirm-password">
+                  visibility_off
+                </span>
+              </div>
+
+              <span class="terms-checked">
+                <input type="checkbox" id="checkbox" />
+
+                <span
+                  >By clicking this, I agree to accept the
+                  <a href="">terms and Condition</a>.
+                </span>
+              </span>
+
+              <span class="sign-btn btn btn--secondary">Sign UP</span>
+            </div>
+          </div>
+
+          <div class="footer footer--sign-up"></div>
+
+          <div class="loading-overlay d-flex u-d-center d-none">
+            <div class="loading-spinning"></div>
           </div>
         </div>
       </div>
@@ -94,33 +105,74 @@
     <script>
       "use strict";
 
-      let signBtn = document.querySelector(".sign-btn");
-      let alert = document.querySelector(".print");
-      let closeBtn = document.querySelector(".close");
-      let printOut = document.querySelector(".print-out");
+      let dataBase = JSON.parse(localStorage.getItem("dataBase")) || [];
 
-      // function closeBtn(params) {
-      //   alert.classList.add("d-none");
-      // }
+      let input = document.querySelectorAll("input");
+
+      let signBtn = document.querySelector(".sign-btn");
+
+      const alert = document.querySelector(".alert");
+
+      const closeBtn = document.querySelector(".close");
+
+      const alertMessage = document.querySelector(".alert-message");
+
+      const overlay = document.querySelector(".loading-overlay");
 
       closeBtn.addEventListener("click", () => {
         alert.classList.add("d-none");
       });
 
-      function alertOut(description) {
+      let hidePassword = document.querySelector(".hide-password");
+
+      let hideConfirmPassword = document.querySelector(
+        ".hide-confirm-password"
+      );
+
+      function popAlert(description) {
         alert.classList.remove("d-none");
-        printOut.innerHTML = description;
+        alertMessage.innerHTML = description;
+
+        setTimeout(() => {
+          alert.classList.add("d-none");
+        }, 3000);
       }
 
-      // my bug1
+      // bug1
 
-      let input = document.querySelectorAll("input");
+      // if (popAlert) {
+      //   input.forEach((el) => {
+      //     el.setAttribute("disabled", true);
+      //   });
+      // }
 
-      if (alertOut) {
-        input.disabled = true;
+      // -----------------------For password
+
+      hidePassword.addEventListener("click", () => {
+        if (password.type == "password") {
+          password.type = "text";
+          password.nextElementSibling.innerHTML = "visibility";
+        } else {
+          password.type = "password";
+          password.nextElementSibling.innerHTML = "visibility_off";
+        }
+      });
+
+      // -------------------------For Confirm Password
+
+      hideConfirmPassword.addEventListener("click", () => {
+        if (confirmPassword.type === "password") {
+          confirmPassword.type = "text";
+          confirmPassword.nextElementSibling.innerHTML = "visibility";
+        } else {
+          confirmPassword.type = "password";
+          confirmPassword.nextElementSibling.innerHTML = "visibility_off";
+        }
+      });
+
+      function over() {
+        overlay.classList.remove("d-none");
       }
-
-      let data = [];
 
       signBtn.addEventListener("click", () => {
         let regex =
@@ -133,43 +185,58 @@
           !country.value.trim() ||
           !number.value.trim() ||
           !password.value.trim() ||
-          !confirmpassword.value.trim()
+          !confirmPassword.value.trim()
         ) {
-          alertOut("all field is mandatory!");
+          popAlert("all field is mandatory!");
         } else if (!number.value.trim() || number.value.length !== 11) {
-          alertOut("Enter a valid phone number");
+          popAlert("Enter a valid phone number");
+        } else if (email.value) {
+          dataBase.forEach((eachData) => {
+            if (email.value == eachData.email)
+              popAlert("Account Already exist Login!");
+          });
         } else if (
-          password.value !== confirmpassword.value ||
-          !confirmpassword.value.trim()
+          password.value !== confirmPassword.value ||
+          !confirmPassword.value.trim()
         ) {
-          alertOut("input password didn't match");
+          popAlert("input password didn't match");
         } else if (!regex.test(password.value)) {
-          alertOut(
-            "Password should contains atleast 8 char, Lowercase, UpperCase and Symbol"
+          popAlert(
+            "Password should contains atleast 8 characters, which includes Lowercase, UpperCase and Symbol"
           );
         } else if (!checkbox.checked) {
-          alertOut("click to agree terms and condition");
+          popAlert("click to agree terms and condition");
         } else {
-          alertOut("account created successfully!");
+          signBtn.innerHTML = "signing up...";
 
-          let account = {
-            firstName: firstname.value,
-            lastName: lastname.value,
-            email: email.value,
-            country: country.value,
-            phone: number.value,
-            crypt: password.value,
-          };
+          over();
 
-          data.push(account);
+          setTimeout(() => {
+            signBtn.setAttribute("disabled", true);
 
-          let dataBase = localStorage.setItem("dataBase", JSON.stringify(data));
+            let account = {
+              firstName: firstname.value,
+              lastName: lastname.value,
+              email: email.value,
+              country: country.value,
+              phone: number.value,
+              // password: password.value,
+            };
+
+            dataBase.push(account);
+
+            localStorage.setItem("dataBase", JSON.stringify(dataBase));
+
+            window.location.href = "login.html";
+
+            popAlert("account created successfully!");
+          }, 3000);
         }
-
-        let dataBaseId = JSON.parse(localStorage.getItem("dataBase"));
-
-        console.log(dataBaseId);
       });
+
+      function deleteAccount() {
+        JSON.parse(localStorage.removeItem("dataBase"));
+      }
     </script>
   </body>
 </html>

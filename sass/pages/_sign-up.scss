@@ -1,0 +1,42 @@
+.form-sign {
+  width: 75%;
+  padding-bottom: 4rem;
+}
+
+.terms-checked {
+  margin-bottom: 2rem !important;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-align: center;
+
+  #checkbox {
+    // margin-left: 0;
+  }
+
+  a {
+    color: $color-primary--shade;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.for-password {
+  position: relative;
+}
+
+.hide-password,
+.hide-confirm-password {
+  color: $color-primary--shade;
+  position: absolute;
+
+  top: 0.5rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
+.sign-btn {
+  width: fit-content;
+}

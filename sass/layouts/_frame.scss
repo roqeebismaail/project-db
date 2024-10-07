@@ -1,0 +1,66 @@
+//--------------------------- page layout design
+
+.app {
+  &-container {
+    background-color: rgba($color-primary, 0.3);
+  }
+
+  &-background {
+    height: 100vh;
+    position: relative;
+    background-color: rgba($color-primary, 0.11);
+
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+}
+
+.container {
+  &--login,
+  &--welcome,
+  &--sign-up,
+  &--home {
+    position: relative;
+    @include sizeMobile;
+  }
+
+  &--welcome {
+    background-color: $color-primary;
+    color: $text-primary;
+    padding: $gutter-vertical-l;
+    transition: all 1s;
+
+    backface-visibility: hidden;
+  }
+
+  &--login,
+  &--sign-up,
+  &--home {
+    background-color: $color-primary--light;
+
+    backface-visibility: hidden;
+  }
+}
+
+.header {
+  &--login,
+  &--sign-up {
+    position: relative;
+    width: 100%;
+    height: 28%;
+    padding: 2rem;
+    background-color: $color-primary;
+
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+}
+
+.footer {
+  &--login,
+  &--sign-up {
+    width: 100%;
+    height: 10%;
+    background-color: $color-primary;
+
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+  }
+}

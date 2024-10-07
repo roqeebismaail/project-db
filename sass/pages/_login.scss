@@ -1,0 +1,24 @@
+.login--form {
+  .create,
+  .reset {
+    a:link,
+    a:visited {
+      color: $color-primary;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+
+  input {
+    width: 100%;
+  }
+
+  label {
+    align-self: flex-start;
+  }
+
+  .reset {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}

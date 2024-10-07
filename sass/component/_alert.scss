@@ -1,0 +1,50 @@
+.header {
+  a {
+    text-decoration: none;
+  }
+
+  .alert {
+    width: 75%;
+    padding: 1rem;
+    background-color: #facd8e81;
+
+    border-top: 4px solid #330e00;
+
+    animation: moveInLeft 1s ease-out;
+    align-self: center;
+    justify-self: center;
+
+    position: relative;
+
+    &-message {
+      color: #facd8e;
+
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    .close {
+      position: absolute;
+
+      right: -1rem;
+      top: -1rem;
+
+      height: 2.4rem;
+      width: 2.4rem;
+      border-radius: 50%;
+      background-color: #ff4400;
+      cursor: pointer;
+      box-shadow: 0 0 1rem #330e00;
+
+      &:hover {
+        background-color: #e03c00;
+      }
+
+      .material-symbols-outlined {
+        color: #facd8e;
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.logo--2 {
+  width: 4rem;
+  // margin: 2rem;
+
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+//---------------------------------icons
+
+.icons {
+  margin-bottom: 2rem;
+  margin-left: -0.5rem;
+  transition: all 0.3s;
+
+  // centering the icon inside
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-back {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgba(254, 245, 232, 0.267);
+
+    &:hover {
+      background-color: rgba($color-primary--light, 0.722);
+    }
+
+    &:hover .material-symbols-outlined {
+      color: $color-primary;
+    }
+  }
+}
+
+.material-symbols-outlined {
+  width: 2.4rem;
+  color: $text-primary;
+  font-weight: 800;
+}

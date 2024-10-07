@@ -1,0 +1,17 @@
+// _typography.scss
+
+// Define a map of font sizes
+$font-sizes: (
+  small: 1.2rem,
+  medium: 1.6rem,
+  large: 2rem,
+  x-large: 2.4rem,
+  xx-large: 3.2rem,
+);
+
+// Generate font size classes
+@each $name, $size in $font-sizes {
+  .font-#{$name} {
+    font-size: $size;
+  }
+}

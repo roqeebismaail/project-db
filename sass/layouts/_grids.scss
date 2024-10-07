@@ -1,0 +1,16 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+
+  gap: 1rem;
+
+  padding: 4rem;
+}
+
+.col {
+  background-color: $color-primary;
+
+  // height: 4rem;
+  // width: 4rem;
+}

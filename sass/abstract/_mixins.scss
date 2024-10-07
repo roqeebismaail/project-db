@@ -1,0 +1,12 @@
+@mixin clearFix {
+  &::after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin sizeMobile {
+  width: $width;
+  height: $height;
+}

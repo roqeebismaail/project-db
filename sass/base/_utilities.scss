@@ -1,0 +1,71 @@
+//--------------------------- utilities
+
+.d-flex {
+  display: flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.u-d-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap--1 {
+  gap: 1rem;
+}
+.gap--2 {
+  gap: 2rem;
+}
+.gap--3 {
+  gap: 3rem;
+}
+.gap--4 {
+  gap: 4rem;
+}
+
+.d-none {
+  display: none;
+}
+
+.overflow-y {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.w-75 {
+  width: 75%;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Developer</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="app-background d-flex u-d-center">
+        <div class="background-layer background-layer--1">&nbsp;</div>
+        <div class="background-layer background-layer--2">&nbsp;</div>
+        <div class="background-layer background-layer--3">&nbsp;</div>
+
+        <div
+          class="container--welcome content d-flex u-d-center flex-col gap--4"
+        >
+          <div class="img">
+            <img src="img/logo.png" alt="img-logo" class="img-logo" />
+          </div>
+
+          <button class="btn btn--primary btn--animated" id="btn-go">
+            Get Started &rarr;
+          </button>
+          <div class="loading-overlay d-flex u-d-center d-none">
+            <div class="loading-spinning"></div>
+          </div>
+
+          <span class="text-description">
+            Lorem ipsum dolor sit amet consec adipisicing elit. Recusandae ipsum
+            quis inventore ut.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+
+      let btn = document.getElementById("btn-go");
+      const overlay = document.querySelector(".loading-overlay");
+
+      function over() {
+        overlay.classList.remove("d-none");
+      }
+
+      btn.addEventListener("click", () => {
+        btn.innerHTML = "Loading...";
+
+        over();
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
