@@ -187,6 +187,12 @@
           popAlert("all field is mandatory!");
         } else if (!number.value.trim() || number.value.length !== 11) {
           popAlert("Enter a valid phone number");
+        } else if (email.value) {
+          dataBase.forEach((eachData) => {
+            if (eachData.email == email.value) {
+              popAlert("Input Email already exist, Try Sign up!");
+            }
+          });
         } else if (
           password.value !== confirmPassword.value ||
           !confirmPassword.value.trim()
@@ -200,7 +206,7 @@
             "Password should contains atleast 8 characters, which includes Lowercase, UpperCase and Symbol"
           );
         } else if (!checkbox.checked) {
-          popAlert("click to agree terms and condition");
+          popAlert("You must to agree terms and condition");
         } else {
           signBtn.innerHTML = "signing up...";
 
