@@ -129,6 +129,9 @@
         ".hide-confirm-password"
       );
 
+      let password = document.getElementById("password");
+      let confirmPassword = document.getElementById("confirmPassword");
+
       function popAlert(description) {
         alert.classList.remove("d-none");
         alertMessage.innerHTML = description;
@@ -138,36 +141,30 @@
         }, 3000);
       }
 
-      // bug1
-
-      // if (popAlert) {
-      //   input.forEach((el) => {
-      //     el.setAttribute("disabled", true);
-      //   });
-      // }
-
       // -----------------------For password
 
+      // function hideIt() {}
+
       hidePassword.addEventListener("click", () => {
-        if (password.type == "password") {
-          password.type = "text";
-          password.nextElementSibling.innerHTML = "visibility";
-        } else {
-          password.type = "password";
-          password.nextElementSibling.innerHTML = "visibility_off";
-        }
+        password.type === "password"
+          ? (password.type = "text")
+          : (password.type = "password");
+
+        password.type === "password"
+          ? (password.nextElementSibling.innerHTML = "visibility_off")
+          : (password.nextElementSibling.innerHTML = "visibility");
       });
 
       // -------------------------For Confirm Password
 
       hideConfirmPassword.addEventListener("click", () => {
-        if (confirmPassword.type === "password") {
-          confirmPassword.type = "text";
-          confirmPassword.nextElementSibling.innerHTML = "visibility";
-        } else {
-          confirmPassword.type = "password";
-          confirmPassword.nextElementSibling.innerHTML = "visibility_off";
-        }
+        confirmPassword.type === "password"
+          ? (confirmPassword.type = "text")
+          : (confirmPassword.type = "password");
+
+        confirmPassword.type === "password"
+          ? (confirmPassword.nextElementSibling.innerHTML = "visibility_off")
+          : (confirmPassword.nextElementSibling.innerHTML = "visibility");
       });
 
       function over() {
@@ -190,17 +187,15 @@
           popAlert("all field is mandatory!");
         } else if (!number.value.trim() || number.value.length !== 11) {
           popAlert("Enter a valid phone number");
-        } else if (email.value) {
-          dataBase.forEach((eachData) => {
-            if (email.value == eachData.email)
-              popAlert("Account Already exist Login!");
-          });
         } else if (
           password.value !== confirmPassword.value ||
           !confirmPassword.value.trim()
         ) {
+          console.log(password.value, confirmPassword.value);
+
           popAlert("input password didn't match");
         } else if (!regex.test(password.value)) {
+          console.log(password.value);
           popAlert(
             "Password should contains atleast 8 characters, which includes Lowercase, UpperCase and Symbol"
           );
@@ -220,7 +215,6 @@
               email: email.value,
               country: country.value,
               phone: number.value,
-              // password: password.value,
             };
 
             dataBase.push(account);
@@ -233,10 +227,6 @@
           }, 3000);
         }
       });
-
-      function deleteAccount() {
-        JSON.parse(localStorage.removeItem("dataBase"));
-      }
     </script>
   </body>
 </html>
